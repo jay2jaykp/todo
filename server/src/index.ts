@@ -19,7 +19,7 @@ console.log(process.env.NODE_ENV);
 //     process.env.DB_HOST || "localhost"
 //   }:${process.env.DB_PORT || 5431}/${process.env.DB_NAME}`
 // );
-app.set("views", __dirname);
+app.set("views", path.resolve(__dirname, "../../client/build"));
 expressNunjucks(app, {
   watch: false,
   noCache: true,
@@ -67,13 +67,13 @@ app.use("/todo", Todo);
 if (process.env.NODE_ENV === "production") {
   // The client statics that will be required by the index.html page that's served
   app.use(
-    express.static(path.resolve(__dirname, "client/build"), {
+    express.static(path.resolve(__dirname, "../../client/build"), {
       // we want the index file to be served by the * route so that we can set cache headers
       index: false,
     })
   );
   app.use(
-    express.static(path.resolve(__dirname, "client/public"), {
+    express.static(path.resolve(__dirname, "../../client/public"), {
       // we want the index file to be served by the * route so that we can set cache headers
       index: false,
     })
@@ -88,7 +88,7 @@ if (process.env.NODE_ENV === "production") {
     res.header("Pragma", "no-cache");
     res.header("Expires", "0");
 
-    res.render("client/build/index.html", {
+    res.render(path.resolve(__dirname, "../../client/build/index.html"), {
       nonce: res.locals.nonce,
     });
   });
