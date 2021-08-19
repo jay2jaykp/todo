@@ -1,0 +1,9 @@
+{
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./server/build/index.js",
+    "build:server": "cd server && npm install && npm run clean && npm run build:prod",
+    "build:client": "cd client && npm install && npm build",
+    "heroku-postbuild": "npm run build:server && npm run build:client"
+  }
+}

@@ -1,9 +1,9 @@
-version: '3.4'
+version: "3.4"
 services:
   client:
     image: node:16-alpine
     ports:
-      - '3000:3000'
+      - "3000:3000"
     working_dir: /app/client
     volumes:
       - ./client:/app/client
@@ -13,12 +13,12 @@ services:
   server:
     image: node:16-alpine
     ports:
-      - '5000:5000'
+      - "5000:5000"
     working_dir: /app/server
     volumes:
       - ./server:/app/server
     environment:
-      - DB_HOST=postgresql
+      DB_HOST: postgresql
     env_file:
       - ./server/.env
     command: sh -c "yarn install && yarn start:dev"
@@ -28,11 +28,11 @@ services:
     image: postgres:12.5
     restart: always
     ports:
-      - '5431:5432'
+      - "5431:5432"
     environment:
-      POSTGRES_USER: 'postgres'
-      POSTGRES_PASSWORD: 'admin'
-      POSTGRES_DB: 'todo'
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "admin"
+      POSTGRES_DB: "todo"
     volumes:
       - todo-data:/var/lib/postgresql/data
 volumes:
