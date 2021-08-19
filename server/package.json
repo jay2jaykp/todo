@@ -28,7 +28,7 @@
     "build:client": "cd ../client && npm run build",
     "build:dev": "tsc -w",
     "run:dev": "nodemon ./build/index.js",
-    "start:dev": "concurrently yarn:build:dev yarn:run:dev",
+    "start:dev": "concurrently npm:build:dev npm:run:dev",
     "build:prod": "tsc",
     "start": "node ./build/index.js",
     "migrate:run": "knex migrate:latest --knexfile ./src/knex/knexConfig.cli.ts",
@@ -36,6 +36,6 @@
     "migrate:rollback": "knex migrate:rollback --all --knexfile ./src/knex/knexConfig.cli.ts",
     "migrate:list": "knex migrate:list --knexfile ./src/knex/knexConfig.cli.ts",
     "seed:run": "knex seed:run --knexfile ./src/knex/knexConfig.ts",
-    "migrate:reset": "yarn run migrate:rollback && yarn run migrate:run && yarn run seed:run"
+    "migrate:reset": "npm run migrate:rollback && npm run migrate:run && npm run seed:run"
   }
 }
