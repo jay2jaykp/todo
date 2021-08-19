@@ -6,6 +6,7 @@ import cors from "cors";
 import expressNunjucks from "express-nunjucks";
 import path from "path";
 import { Todo } from "./api/routes";
+import { ResetMigration } from "./knex";
 
 dotenv.config();
 
@@ -101,6 +102,6 @@ if (process.env.NODE_ENV === "production") {
  * @note to avoid unnecessary resets while in dev env
  * let's add condition to check the prod env for reseting
  */
-// if (process.env.NODE_ENV === 'production') ResetMigration();
+if (process.env.NODE_ENV === "production") ResetMigration();
 
 app.listen(PORT, () => console.log(`server is listening on ${PORT}`));

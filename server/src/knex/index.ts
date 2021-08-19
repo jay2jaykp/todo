@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
-import * as knexConfig from './knexConfig';
+import dotenv from "dotenv";
+import * as knexConfig from "./knexConfig";
 
 // env variables
 dotenv.config();
@@ -10,7 +10,7 @@ dotenv.config();
  * @see {@link knexfile.ts}
  */
 
-export const knex = require('knex')(knexConfig);
+export const knex = require("knex")(knexConfig);
 
 /**
  *
@@ -19,15 +19,15 @@ export const knex = require('knex')(knexConfig);
  */
 export const ResetMigration = async () => {
   try {
-    console.log('Migration Rollback Started...');
-    await knex.migrate.rollback(knexConfig, true);
-    console.log('Migration Started...');
+    // console.log('Migration Rollback Started...');
+    // await knex.migrate.rollback(knexConfig, true);
+    console.log("Migration Started...");
     await knex.migrate.latest(knexConfig);
-    console.log('Seeding Started...');
-    await knex.seed.run(knexConfig);
+    // console.log('Seeding Started...');
+    // await knex.seed.run(knexConfig);
   } catch (error) {
-    console.log('error');
+    console.log("error");
   } finally {
-    console.log('Migration Reset Successful');
+    console.log("Migration Reset Successful");
   }
 };
