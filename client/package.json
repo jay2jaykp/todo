@@ -24,8 +24,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "copy": "copyfiles ./build/**/* ../server/build/client && copyfiles ./public/**/* ../server/build/client",
-    "build": "react-scripts build && npm run copy",
+    "copy-build": "copyfiles ./build/**/* ../server/build/client",
+    "copy-public": "copyfiles ./public/**/* ../server/build/client",
+    "build": "react-scripts build && npm run copy-build && npm run copy-public",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
